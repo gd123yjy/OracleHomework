@@ -5,6 +5,7 @@ import cn.yjy.repository.StudentRepository;
 import cn.yjy.service.StudentService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -20,7 +21,7 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public Set<Student> findAllStudent() {
+    public List<Student> findAllStudent() {
         return studentRepository.getAllStudent();
     }
 

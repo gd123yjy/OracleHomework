@@ -6,6 +6,7 @@ import cn.yjy.repository.CollegeRepository;
 import cn.yjy.service.CollegeService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,7 +22,7 @@ public class CollegeServiceImp implements CollegeService {
     }
 
     @Override
-    public Set<College> findAllCollege() {
+    public List<College> findAllCollege() {
         return collegeRepository.getAllCollege();
     }
 
@@ -36,7 +37,7 @@ public class CollegeServiceImp implements CollegeService {
     }
 
     @Override
-    public Set<Student> findEnrollListOfCollege(Integer cno) {
+    public List<Student> findEnrollListOfCollege(Integer cno) {
         return collegeRepository.getStudentSet(cno);
     }
 }

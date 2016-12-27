@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -28,7 +29,7 @@ public class CollegeController {
     }
 
     @RequestMapping("/college")
-    public Set<College> listCollege(){
+    public List<College> listCollege(){
         return collegeService.findAllCollege();
     }
 
@@ -43,7 +44,7 @@ public class CollegeController {
     }
 
     @RequestMapping("/student/{cno}/enrolllist")
-    public Set<Student> findEnrollListOfCollege(@PathVariable Integer cno){
+    public List<Student> findEnrollListOfCollege(@PathVariable Integer cno){
         return collegeService.findEnrollListOfCollege(cno);
     }
 }

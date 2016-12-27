@@ -3,6 +3,7 @@ package cn.yjy.repository;
 import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -10,8 +11,8 @@ import java.util.Set;
  */
 public interface CollegeRepository {
 
-    Set<College> getAllCollege();
+    List<College> getAllCollege();
     College getBasicCollegeInformation(int cno);
     College getAllCollegeInformation(int cno);
-    Set<Student> getStudentSet(Integer cno);
+    List<Student> getStudentSet(Integer cno);
 }

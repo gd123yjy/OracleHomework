@@ -16,6 +16,9 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import cn.yjy.repository.StudentRepository;
 import cn.yjy.repository.imp.StudentRepositoryImp;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.sql.DataSource;
 
 /**
  * Created by yjy on 16-12-16.
@@ -36,14 +39,13 @@ public class MyConfiguration {
 
     @Bean
     @Qualifier("priority1")
-    @Conditional(MyCondition.class)
-    public StudentRepository studentRepository(@Value("${myRepository.message}") String message){
+    public StudentRepository studentRepository(@Value("${studentRepository.message}") String message){
         return new StudentRepositoryImp();
     }
 
     @Bean
-    @Conditional(MyCondition.class)
-    public CollegeRepository collegeRepository(@Value("${myRepository.message}") String message){
+    public CollegeRepository collegeRepository(@Value("${collegeRepository.message}") String message){
         return new CollegeRepositoryImp();
     }
+
 }

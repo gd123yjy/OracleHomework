@@ -4,6 +4,7 @@ import cn.yjy.pojo.Student;
 import cn.yjy.repository.StudentRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Set;
 public class StudentRepositoryImp implements StudentRepository {
 
     @Override
-    public Set<Student> getAllStudent() {
+    public List<Student> getAllStudent() {
         return null;
     }
 
