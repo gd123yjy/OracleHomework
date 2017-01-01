@@ -3,6 +3,7 @@ package cn.yjy.pojo;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,19 +13,19 @@ import java.util.Set;
 @JsonRootName("college")
 public class College {
 
-    private int number;
+    private Integer number;
     private String name;
-    private int borderline;
-    private int tagetEnroll;
-    private int actualEnroll;
+    private Integer borderline;
+    private Integer targetEnroll;
+    private Integer actualEnroll;
 
-    private Set<Student> students;
+    private List<Student> students;
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
@@ -36,36 +37,41 @@ public class College {
         this.name = name;
     }
 
-    public int getBorderline() {
+    public Integer getBorderline() {
         return borderline;
     }
 
-    public void setBorderline(int borderline) {
+    public void setBorderline(Integer borderline) {
         this.borderline = borderline;
     }
 
-    public int getTagetEnroll() {
-        return tagetEnroll;
+    public Integer getTargetEnroll() {
+        return targetEnroll;
     }
 
-    public void setTagetEnroll(int tagetEnroll) {
-        this.tagetEnroll = tagetEnroll;
+    public void setTargetEnroll(Integer targetEnroll) {
+        this.targetEnroll = targetEnroll;
     }
 
-    public int getActualEnroll() {
+    public Integer getActualEnroll() {
         return actualEnroll;
     }
 
-    public void setActualEnroll(int actualEnroll) {
+    public void setActualEnroll(Integer actualEnroll) {
         this.actualEnroll = actualEnroll;
     }
 
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 
     @Override

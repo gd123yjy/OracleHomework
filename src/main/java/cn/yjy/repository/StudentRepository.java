@@ -1,5 +1,6 @@
 package cn.yjy.repository;
 
+import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 
 import java.util.List;
@@ -13,5 +14,5 @@ public interface StudentRepository {
     List<Student> getAllStudent();
     Student getBasicInformation(int sno);
     Student getAllInformation(int sno);
-    String getEnrollCollege(int sno);
+    College getEnrollCollege(int sno);
 }

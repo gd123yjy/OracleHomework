@@ -38,6 +38,6 @@ public class CollegeServiceImp implements CollegeService {
 
     @Override
     public List<Student> findEnrollListOfCollege(Integer cno) {
-        return collegeRepository.getStudentSet(cno);
+        return collegeRepository.getStudentList(cno);
     }
 }

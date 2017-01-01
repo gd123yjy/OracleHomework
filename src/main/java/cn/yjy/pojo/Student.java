@@ -13,26 +13,47 @@ import java.util.Date;
 public class Student {
 
     //student表
-    private int number;
+    private Integer number;
     private String name;
-    private char gender;
-    private int grade;
+    private Character gender;
+    private Integer grade;
     //student_will表
-    private boolean autoAdjust;
+    private Boolean autoAdjust;
     private College aspiration1;
     private College aspiration2;
     //student_enroll表
-    private boolean enroll;
+    private Boolean enroll;
     private College enrollCollege;
-    private int enrollAspiration;
+    private Integer enrollAspiration;
     private Date enrollDate;
     private String operator;
 
-    public int getNumber() {
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return getNumber();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        try {
+            return ((Student)obj).getNumber() == this.getNumber();
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 
@@ -44,27 +65,27 @@ public class Student {
         this.name = name;
     }
 
-    public char getGender() {
+    public Character getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Character gender) {
         this.gender = gender;
     }
 
-    public int getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 
-    public boolean isAutoAdjust() {
+    public Boolean getAutoAdjust() {
         return autoAdjust;
     }
 
-    public void setAutoAdjust(boolean autoAdjust) {
+    public void setAutoAdjust(Boolean autoAdjust) {
         this.autoAdjust = autoAdjust;
     }
 
@@ -84,11 +105,11 @@ public class Student {
         this.aspiration2 = aspiration2;
     }
 
-    public boolean isEnroll() {
+    public Boolean getEnroll() {
         return enroll;
     }
 
-    public void setEnroll(boolean enroll) {
+    public void setEnroll(Boolean enroll) {
         this.enroll = enroll;
     }
 
@@ -100,11 +121,11 @@ public class Student {
         this.enrollCollege = enrollCollege;
     }
 
-    public int getEnrollAspiration() {
+    public Integer getEnrollAspiration() {
         return enrollAspiration;
     }
 
-    public void setEnrollAspiration(int enrollAspiration) {
+    public void setEnrollAspiration(Integer enrollAspiration) {
         this.enrollAspiration = enrollAspiration;
     }
 
@@ -122,20 +143,5 @@ public class Student {
 
     public void setOperator(String operator) {
         this.operator = operator;
-    }
-
-    @Override
-    public int hashCode() {
-        return getNumber();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        try {
-            return ((Student)obj).getNumber() == this.getNumber();
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
     }
 }

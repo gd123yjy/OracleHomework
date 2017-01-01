@@ -1,5 +1,6 @@
 package cn.yjy.controller;
 
+import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 import cn.yjy.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,6 @@ public class StudentController {
 
     @Autowired
     private StudentService studentService;
-
-    public StudentService getStudentService() {
-        return studentService;
-    }
-
-    public void setStudentService(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -48,7 +41,7 @@ public class StudentController {
     }
 
     @RequestMapping("/student/{sno}/enrollcollege")
-    public String findEnrollCollegeOfStudent(@PathVariable Integer sno){
+    public College findEnrollCollegeOfStudent(@PathVariable Integer sno){
         return studentService.findEnrollCollegeOfStudent(sno);
     }
 }

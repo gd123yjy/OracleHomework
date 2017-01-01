@@ -1,5 +1,6 @@
 package cn.yjy.service;
 
+import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 
 import java.util.List;
@@ -15,5 +16,5 @@ public interface StudentService {
 
     Student findAllStudentInformation(Integer sno);
 
-    String findEnrollCollegeOfStudent(Integer sno);
+    College findEnrollCollegeOfStudent(Integer sno);
 }

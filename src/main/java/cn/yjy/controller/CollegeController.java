@@ -20,14 +20,6 @@ public class CollegeController {
     @Autowired
     private CollegeService collegeService;
 
-    public CollegeService getCollegeService() {
-        return collegeService;
-    }
-
-    public void setCollegeService(CollegeService collegeService) {
-        this.collegeService = collegeService;
-    }
-
     @RequestMapping("/college")
     public List<College> listCollege(){
         return collegeService.findAllCollege();
@@ -38,12 +30,7 @@ public class CollegeController {
         return collegeService.findBasicCollegeInformation(cno);
     }
 
-    @RequestMapping("/college/{cno}/details")
-    public College findCollegeDetails(@PathVariable Integer sno){
-        return collegeService.findAllStudentInformation(sno);
-    }
-
-    @RequestMapping("/student/{cno}/enrolllist")
+    @RequestMapping("/college/{cno}/enrolllist")
     public List<Student> findEnrollListOfCollege(@PathVariable Integer cno){
         return collegeService.findEnrollListOfCollege(cno);
     }

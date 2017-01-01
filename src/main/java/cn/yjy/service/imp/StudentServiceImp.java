@@ -1,5 +1,6 @@
 package cn.yjy.service.imp;
 
+import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 import cn.yjy.repository.StudentRepository;
 import cn.yjy.service.StudentService;
@@ -36,7 +37,7 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public String findEnrollCollegeOfStudent(Integer sno) {
+    public College findEnrollCollegeOfStudent(Integer sno) {
         return studentRepository.getEnrollCollege(sno);
     }
 }

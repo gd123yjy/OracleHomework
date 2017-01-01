@@ -3,13 +3,12 @@ package cn.yjy.repository.imp;
 import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 import cn.yjy.repository.CollegeRepository;
+import cn.yjy.repository.rowMapper.SimpleStudentRowMapper;
+import cn.yjy.repository.rowMapper.CollegeRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -18,12 +17,13 @@ import java.util.List;
 @Repository
 public class CollegeRepositoryImp implements CollegeRepository {
 
-
     //spring boot 自带默认jdbctemplate
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     private CollegeRowMapper collegeRowMapper = new CollegeRowMapper();
+
+    private SimpleStudentRowMapper simpleStudentRowMapper = new SimpleStudentRowMapper();
 
     @Override
     public List<College> getAllCollege() {
@@ -32,35 +32,19 @@ public class CollegeRepositoryImp implements CollegeRepository {
 
     @Override
     public College getBasicCollegeInformation(int cno) {
-        return null;
+        return jdbcTemplate.queryForObject("SELECT * FROM YJY_HOMEWORK.COLLEGE WHERE college_number=?",new Object[]{cno},collegeRowMapper);
     }
 
     @Override
     public College getAllCollegeInformation(int cno) {
-        return null;
+        College college = getBasicCollegeInformation(cno);
+        college.setStudents(getStudentList(cno));
+        return college;
     }
 
     @Override
-    public List<Student> getStudentSet(Integer cno) {
-        return null;
+    public List<Student> getStudentList(Integer cno) {
+        return jdbcTemplate.query("select * from YJY_HOMEWORK.ENROLL_RESULT WHERE CNO=?",new Object[]{cno}, simpleStudentRowMapper);
     }
 
-    class CollegeRowMapper implements RowMapper{
-
-        @Override
-        public Object mapRow(ResultSet resultSet, int i) throws SQLException {
-            try {
-                College college = new College();
-                college.setNumber(resultSet.getInt("COLLEGE_NUMBER"));
-                college.setName(resultSet.getString("COLLEGE_NAME"));
-                college.setBorderline(resultSet.getInt("BORDERLINE"));
-                college.setTagetEnroll(resultSet.getInt("TARGETENROLL"));
-                college.setActualEnroll(resultSet.getInt("ACTUALENROLL"));
-                return college;
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-    }
 }
