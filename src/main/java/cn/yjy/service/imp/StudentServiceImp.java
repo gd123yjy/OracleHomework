@@ -7,7 +7,6 @@ import cn.yjy.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by yjy on 16-12-27.
@@ -27,17 +26,18 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public Student findBasicStudentInformation(Integer sno) {
+    public Student findStudentBasicInformation(Integer sno) {
         return studentRepository.getBasicInformation(sno);
     }
 
     @Override
-    public Student findAllStudentInformation(Integer sno) {
-        return studentRepository.getAllInformation(sno);
+    public Student findAllStudentWill(Integer sno) {
+        Student student = studentRepository.getWill(sno);
+        return student;
     }
 
     @Override
-    public College findEnrollCollegeOfStudent(Integer sno) {
+    public College findStudentEnroll(Integer sno) {
         return studentRepository.getEnrollCollege(sno);
     }
 }

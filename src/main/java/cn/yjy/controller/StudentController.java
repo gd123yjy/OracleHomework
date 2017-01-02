@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by yjy on 16-12-27.
@@ -32,16 +31,16 @@ public class StudentController {
 
     @RequestMapping("/student/{sno}")
     public Student findStudent(@PathVariable Integer sno){
-        return studentService.findBasicStudentInformation(sno);
+        return studentService.findStudentBasicInformation(sno);
     }
 
-    @RequestMapping("/student/{sno}/details")
+    @RequestMapping("/student/{sno}/will")
     public Student findStudentDetails(@PathVariable Integer sno){
-        return studentService.findAllStudentInformation(sno);
+        return studentService.findAllStudentWill(sno);
     }
 
     @RequestMapping("/student/{sno}/enrollcollege")
     public College findEnrollCollegeOfStudent(@PathVariable Integer sno){
-        return studentService.findEnrollCollegeOfStudent(sno);
+        return studentService.findStudentEnroll(sno);
     }
 }

@@ -4,7 +4,7 @@ import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 import cn.yjy.repository.CollegeRepository;
 import cn.yjy.repository.rowMapper.SimpleStudentRowMapper;
-import cn.yjy.repository.rowMapper.CollegeRowMapper;
+import cn.yjy.repository.rowMapper.CollegeBasicInformationRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -21,7 +21,7 @@ public class CollegeRepositoryImp implements CollegeRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private CollegeRowMapper collegeRowMapper = new CollegeRowMapper();
+    private CollegeBasicInformationRowMapper collegeRowMapper = new CollegeBasicInformationRowMapper();
 
     private SimpleStudentRowMapper simpleStudentRowMapper = new SimpleStudentRowMapper();
 

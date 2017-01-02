@@ -4,8 +4,8 @@ import cn.yjy.pojo.College;
 import cn.yjy.pojo.Student;
 import cn.yjy.repository.StudentRepository;
 import cn.yjy.repository.rowMapper.SimpleCollegeRowMapper;
-import cn.yjy.repository.rowMapper.SimpleStudentRowMapper;
-import cn.yjy.repository.rowMapper.StudentRowMapper;
+import cn.yjy.repository.rowMapper.StudentBasicInformationRowMapper;
+import cn.yjy.repository.rowMapper.StudentWillRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,32 +22,32 @@ public class StudentRepositoryImp implements StudentRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    private StudentRowMapper studentRowMapper = new StudentRowMapper();
+    private StudentBasicInformationRowMapper studentBasicInformationRowMapper = new StudentBasicInformationRowMapper();
+
+    private StudentWillRowMapper studentWillRowMapper = new StudentWillRowMapper();
 
     private SimpleCollegeRowMapper simpleCollegeRowMapper = new SimpleCollegeRowMapper();
 
     @Override
     public List<Student> getAllStudent() {
-        return jdbcTemplate.query("select * from YJY_HOMEWORK.STUDENT",new Object[]{}, studentRowMapper);
+        return jdbcTemplate.query("select * from YJY_HOMEWORK.STUDENT", new Object[]{}, studentBasicInformationRowMapper);
     }
 
     @Override
     public Student getBasicInformation(int sno) {
-        return jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.STUDENT WHERE STUDENT_NUMBER=?",new Object[]{sno}, studentRowMapper);
+        return jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.STUDENT WHERE STUDENT_NUMBER=?", new Object[]{sno}, studentBasicInformationRowMapper);
     }
 
     @Override
-    public Student getAllInformation(int sno) {
-        Student student = getBasicInformation(sno);
-        // TODO: 17-1-1
-        //student.setAspiration1();
+    public Student getWill(int sno) {
+        Student student = jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.ALL_WILL WHERE STUDENT_NUMBER=?", new Object[]{sno}, studentWillRowMapper);
         return student;
     }
 
     @Override
     public College getEnrollCollege(int sno) {
         try {
-            return jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.ENROLL_RESULT WHERE SNO=?",new Object[]{sno}, simpleCollegeRowMapper);
+            return jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.ENROLL_RESULT WHERE SNO=?", new Object[]{sno}, simpleCollegeRowMapper);
         } catch (DataAccessException e) {
             e.printStackTrace();
             return null;

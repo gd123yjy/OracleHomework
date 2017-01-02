@@ -12,9 +12,9 @@ import java.util.Set;
 public interface StudentService {
     List<Student> findAllStudent();
 
-    Student findBasicStudentInformation(Integer sno);
+    Student findStudentBasicInformation(Integer sno);
 
-    Student findAllStudentInformation(Integer sno);
+    Student findAllStudentWill(Integer sno);
 
-    College findEnrollCollegeOfStudent(Integer sno);
+    College findStudentEnroll(Integer sno);
 }

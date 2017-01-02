@@ -9,7 +9,7 @@ import java.sql.SQLException;
 /**
  * Created by yjy on 17-1-1.
  */
-public class StudentRowMapper implements RowMapper<Student> {
+public class StudentBasicInformationRowMapper implements RowMapper<Student> {
     @Override
     public Student mapRow(ResultSet resultSet, int i) throws SQLException {
         Student student = new Student();

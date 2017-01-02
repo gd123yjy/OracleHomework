@@ -13,6 +13,6 @@ public interface StudentRepository {
 
     List<Student> getAllStudent();
     Student getBasicInformation(int sno);
-    Student getAllInformation(int sno);
+    Student getWill(int sno);
     College getEnrollCollege(int sno);
 }
