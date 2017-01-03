@@ -3,10 +3,14 @@ package cn.yjy.configuration;
 import cn.yjy.condition.MyCondition;
 import cn.yjy.controller.MainController;
 import cn.yjy.repository.CollegeRepository;
+import cn.yjy.repository.EnrollRepository;
 import cn.yjy.repository.imp.CollegeRepositoryImp;
+import cn.yjy.repository.imp.EnrollRepositoryImp;
 import cn.yjy.service.CollegeService;
+import cn.yjy.service.EnrollService;
 import cn.yjy.service.StudentService;
 import cn.yjy.service.imp.CollegeServiceImp;
+import cn.yjy.service.imp.EnrollServiceImp;
 import cn.yjy.service.imp.StudentServiceImp;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +31,12 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan(basePackageClasses = MainController.class)
 public class MyConfiguration {
+
+    @Bean
+    public EnrollService enrollService(EnrollRepository enrollRepository){
+        return new EnrollServiceImp(enrollRepository);
+    }
+
     @Bean
     public StudentService studentService(@Qualifier("priority1") StudentRepository studentRepository){
         return new StudentServiceImp(studentRepository);
@@ -35,6 +45,11 @@ public class MyConfiguration {
     @Bean
     public CollegeService collegeService(CollegeRepository collegeRepository){
         return new CollegeServiceImp(collegeRepository);
+    }
+
+    @Bean
+    public EnrollRepository enrollRepository(){
+        return new EnrollRepositoryImp();
     }
 
     @Bean

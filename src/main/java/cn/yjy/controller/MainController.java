@@ -1,5 +1,7 @@
 package cn.yjy.controller;
 
+import cn.yjy.service.EnrollService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MainController {
 
+    @Autowired
+    private EnrollService enrollService;
+
     @RequestMapping({"","/"})
     public String index(HttpServletRequest request){
         return "index.html";
@@ -27,14 +32,19 @@ public class MainController {
 
     @RequestMapping(value = "/enrollmanipulator",method = RequestMethod.POST)
     public @ResponseBody String manipulator_POST(@RequestParam("request_type") Integer request_type){
-        if (request_type == 1){
-            // TODO: 17-1-3 调用自动投档
-            return  "自动投档已完成";
-        }else if (request_type == 2){
-            // TODO: 17-1-3 调用一键还原
-            return "一键还原已完成";
-        }else {
-            return "请求格式错误";
+        try {
+            if (request_type == 1){
+                enrollService.AutoEnroll();
+                return  "自动投档已完成";
+            }else if (request_type == 2){
+                enrollService.ClearStatus();
+                return "一键还原已完成";
+            }else {
+                return "请求格式错误";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "出错啦！";
         }
     }
 }
