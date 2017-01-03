@@ -17,4 +17,6 @@ public interface CollegeService {
     College findAllStudentInformation(Integer cno);
 
     List<Student> findEnrollListOfCollege(Integer cno);
+
+    List<College> findEnrollReport();
 }

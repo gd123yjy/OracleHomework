@@ -18,6 +18,7 @@ public class College {
     private Integer borderline;
     private Integer targetEnroll;
     private Integer actualEnroll;
+    private Integer vacancies;
 
     private List<Student> students;
 
@@ -59,6 +60,14 @@ public class College {
 
     public void setActualEnroll(Integer actualEnroll) {
         this.actualEnroll = actualEnroll;
+    }
+
+    public Integer getVacancies() {
+        return vacancies;
+    }
+
+    public void setVacancies(Integer vacancies) {
+        this.vacancies = vacancies;
     }
 
     public List<Student> getStudents() {

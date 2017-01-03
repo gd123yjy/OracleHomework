@@ -15,4 +15,6 @@ public interface CollegeRepository {
     College getBasicCollegeInformation(int cno);
     College getAllCollegeInformation(int cno);
     List<Student> getStudentList(Integer cno);
+
+    List<College> getEnrollReport();
 }

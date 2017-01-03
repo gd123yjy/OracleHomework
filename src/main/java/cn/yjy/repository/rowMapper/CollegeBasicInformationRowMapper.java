@@ -19,7 +19,6 @@ public class CollegeBasicInformationRowMapper implements RowMapper<College> {
             college.setName(resultSet.getString("COLLEGE_NAME"));
             college.setBorderline(resultSet.getInt("BORDERLINE"));
             college.setTargetEnroll(resultSet.getInt("TARGETENROLL"));
-            college.setActualEnroll(resultSet.getInt("ACTUALENROLL"));
             return college;
         } catch (SQLException e) {
             e.printStackTrace();

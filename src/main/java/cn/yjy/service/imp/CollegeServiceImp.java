@@ -40,4 +40,9 @@ public class CollegeServiceImp implements CollegeService {
     public List<Student> findEnrollListOfCollege(Integer cno) {
         return collegeRepository.getStudentList(cno);
     }
+
+    @Override
+    public List<College> findEnrollReport() {
+        return collegeRepository.getEnrollReport();
+    }
 }

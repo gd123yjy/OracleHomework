@@ -25,6 +25,11 @@ public class CollegeController {
         return collegeService.findAllCollege();
     }
 
+    @RequestMapping("/college/enrollreport")
+    public List<College> listEnrollReport(){
+        return collegeService.findEnrollReport();
+    }
+
     @RequestMapping("/college/{cno}")
     public College findCollege(@PathVariable Integer cno){
         return collegeService.findBasicCollegeInformation(cno);

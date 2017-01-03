@@ -7,13 +7,11 @@
 <body>
 welcome to manipulator.html<br>
 本页提供清空录取结果、一键投档的相关功能<br>
-采用form交互，不使用ajax<br>
-要说为何的话，大概是因为自动录取的权限只开放给人，而不开放给机器<br>
 <form method="post">
-    <input type="submit" value="自动投档">
+    自动投档<input type="radio" name="request_type" value="1" checked="checked"><br>
+    一键还原<input type="radio" name="request_type" value="2"><br>
+    <input type="submit" value="确定"><br>
 </form>
-<form method="post">
-    <input type="submit" value="清空结果">
 </form>
 </body>
 </html>
