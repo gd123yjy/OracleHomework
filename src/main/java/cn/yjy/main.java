@@ -1,5 +1,6 @@
 package cn.yjy;
 
+import cn.yjy.configuration.CorsConfig;
 import cn.yjy.configuration.MyConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.SpringBootConfiguration;
@@ -14,7 +15,7 @@ import org.springframework.context.annotation.*;
 @SpringBootConfiguration
 @EnableAutoConfiguration
 @PropertySource("classpath:/myProperties.properties")
-@Import(MyConfiguration.class)
+@Import({MyConfiguration.class,CorsConfig.class})
 //@SpringBootApplication
 public class main {
 
