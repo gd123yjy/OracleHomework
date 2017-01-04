@@ -40,7 +40,12 @@ public class StudentRepositoryImp implements StudentRepository {
 
     @Override
     public Student getWill(int sno) {
-        Student student = jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.ALL_WILL WHERE STUDENT_NUMBER=?", new Object[]{sno}, studentWillRowMapper);
+        Student student = null;
+        try {
+            student = jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.ALL_WILL WHERE STUDENT_NUMBER=?", new Object[]{sno}, studentWillRowMapper);
+        } catch (DataAccessException e) {
+            e.printStackTrace();
+        }
         return student;
     }
 
