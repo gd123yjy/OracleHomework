@@ -55,7 +55,9 @@ public class StudentRepositoryImp implements StudentRepository {
             return jdbcTemplate.queryForObject("select * from YJY_HOMEWORK.ENROLL_RESULT WHERE SNO=?", new Object[]{sno}, simpleCollegeRowMapper);
         } catch (DataAccessException e) {
             e.printStackTrace();
-            return null;
+            College college = new College();
+            college.setName("暂无录取信息");
+            return college;
         }
     }
 }
